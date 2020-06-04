@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pos_header_height"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/icon_back"
+            android:padding="5dp"
+            android:scaleType="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/header_text_size"
+            android:text="娱乐积累"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:text="我的K歌时间"
+        android:textColor="@color/white"
+        android:textSize="@dimen/pm_20" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="800dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/tv1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg"
+        android:text="开始"
+        android:textColor="@color/white"
+        android:textSize="@dimen/pm_20" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="800dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/btnStart"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg"
+        android:text="停止"
+        android:textColor="@color/white"
+        android:textSize="@dimen/pm_20" />
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="800dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/btnStop"
+        android:layout_alignStart="@+id/btnStart"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg"
+        android:text="播放"
+        android:textColor="@color/white"
+        android:textSize="@dimen/pm_20" />
+
+    <Button
+        android:id="@+id/btnUpLoad"
+        android:layout_width="800dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/btnPlay"
+        android:layout_alignStart="@+id/btnStop"
+        android:layout_alignEnd="@+id/btnPlay"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/bg"
+        android:text="上传"
+        android:textColor="@color/white"
+        android:textSize="@dimen/pm_20" />
+
+</RelativeLayout>

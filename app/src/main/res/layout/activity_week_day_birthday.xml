@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_vip"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="70dp"
+    android:background="@drawable/shape_dialog_vip_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pm_50"
+        android:padding="@dimen/pm_12">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="设置纪念日"
+            android:textColor="@color/black"
+            android:textSize="21dp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/dialog_vip_line"
+        />
+
+    <EditText
+        android:id="@+id/friend_name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/edit_text_bg"
+        android:gravity="center"
+        android:hint="请输入名称"
+        android:maxLength="100"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textColor="@color/text_content"
+        android:textColorHint="@color/text_hint"
+        android:textSize="@dimen/sp_26" />
+    <TextView
+        android:id="@+id/date_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/pm_16"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/edit_text_bg"
+        android:maxLength="100"
+        android:paddingLeft="15dp"
+        android:gravity="center"
+        android:hint="点击选择日期"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textColor="@color/text_content"
+        android:textColorHint="@color/text_hint"
+        android:textSize="@dimen/sp_26" />
+
+    <Button
+        android:id="@+id/set_date_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_button_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.05"
+        android:background="@drawable/selector_btn_blue_strok"
+        android:textColor="@color/btn_yellow_light_bg"
+        android:orientation="horizontal"
+        android:text= "设置"
+        android:textSize="@dimen/sp_18">
+
+    </Button>
+
+    <Button
+        android:id="@+id/close_set_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_button_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_btn_blue"
+        android:orientation="horizontal"
+        android:textColor="@color/white"
+        android:text="清空"
+        android:textSize="@dimen/sp_18">
+
+    </Button>
+
+</LinearLayout>

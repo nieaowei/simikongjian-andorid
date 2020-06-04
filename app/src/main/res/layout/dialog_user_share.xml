@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/create_user_dialog_view"
+    android:layout_width="fill_parent"
+    android:layout_height="280dp"
+    android:background="@drawable/card_white_bg"
+    android:minWidth="200dp"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingBottom="30dp">
+
+    <EditText
+        android:id="@+id/my_friends_shares_message"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="18dp"
+        android:background="@android:drawable/edit_text"
+        android:enabled="true"
+        android:gravity="top"
+        android:hint="上传朋友圈"
+        android:inputType="textMultiLine"
+        android:maxLines="10"
+        android:minLines="8"
+        android:padding="@dimen/sp_12"
+        android:scrollbars="vertical"/>
+    <Button
+        android:id="@+id/send_myfriends"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_common_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_btn_blue"
+        android:orientation="horizontal"
+        android:textColor="@color/white"
+        android:text="发送到朋友圈"
+        android:textSize="@dimen/sp_18">
+
+    </Button>
+
+    <Button
+        android:id="@+id/canel_send_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_common_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/selector_btn_blue"
+        android:orientation="horizontal"
+        android:textColor="@color/white"
+        android:text="取消"
+        android:textSize="@dimen/sp_18">
+
+    </Button>
+
+</LinearLayout>

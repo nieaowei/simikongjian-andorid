@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/create_user_dialog_view"
+    android:layout_width="fill_parent"
+    android:layout_height="500dp"
+    android:background="@drawable/card_white_bg"
+    android:minWidth="200dp"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingBottom="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:text="用户名"
+        android:textColor="@color/text_content"
+        android:textSize="@dimen/sp_18" />
+    <EditText
+        android:id="@+id/user_name_ok"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edit_text_height"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/pm_16"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/edit_text_bg"
+        android:gravity="center"
+        android:enabled="false"
+        android:inputType="text"
+        android:maxLength="15"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textColor="@color/text_content"
+        android:textColorHint="@color/text_hint"
+        android:textSize="@dimen/sp_18" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/pm_16"
+        android:text="修改密码"
+        android:textColor="@color/text_content"
+        android:textSize="@dimen/sp_18" />
+
+    <EditText
+        android:id="@+id/username_pass"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edit_text_height"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/pm_16"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/edit_text_bg"
+        android:gravity="center"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:maxLength="15"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textColor="@color/text_content"
+        android:textColorHint="@color/text_hint"
+        android:textSize="@dimen/sp_18" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/pm_16"
+        android:text="确认修改密码"
+        android:textColor="@color/text_content"
+        android:textSize="@dimen/sp_18" />
+
+    <EditText
+        android:id="@+id/username_pass_ok"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edit_text_height"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/pm_16"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/edit_text_bg"
+        android:gravity="center"
+        android:hint="请确认密码"
+        android:inputType="textPassword"
+        android:maxLength="15"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textColor="@color/text_content"
+        android:textColorHint="@color/text_hint"
+        android:textSize="@dimen/sp_18" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_marginTop="@dimen/pm_20"
+        android:background="@color/divider" />
+
+    <Button
+        android:id="@+id/ok_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_common_height"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/pm_16"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/selector_btn_blue"
+        android:text="确认"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_18" />
+
+    <Button
+        android:id="@+id/return_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_common_height"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/selector_btn_blue"
+        android:text="返回"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_18" />
+</LinearLayout>

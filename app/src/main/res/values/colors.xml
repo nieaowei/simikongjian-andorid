@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1F3780</color>
+    <color name="colorPrimaryDark">#1F3780</color>
+    <color name="colorAccent">#1F3780</color>
+
+    <!--Common-->
+    <color name="white">#fff</color>
+    <color name="bpRed">#fff</color>
+    <color name="black">#000</color>
+    <color name="background">#EEEFF2</color>
+    <color name="loading_bg">#333333</color>
+    <color name="gray_line">#F5F5F5</color>
+    <color name="dialog_vip_line">#DDDDDD</color>
+    <!--分割线颜色 所有分割线全用这个颜色 高度0.5dp-->
+    <color name="divider">#EEEEEE</color>
+    <color name="stroke">#DADADA</color>
+    <color name="transparent_black">#CC000000</color>
+
+    <color name="btn">#00000000</color>
+    <color name="btn_press">#30000000</color>
+    <color name="dialog_bg">#fcfcfc</color>
+    <color name="header_bg">#1F3780</color>
+    <color name="popwindow_bg">#E5EDFE</color>
+    <color name="search_bg">#21F3F3F3</color>
+    <color name="search_stroke">#66f3f3f3</color>
+    <dimen name="height_bg_list_blue">130dp</dimen>
+    <dimen name="width_filter_icon">17dp</dimen>
+
+    <!--Font-->
+    <color name="font_333">#333333</color>
+    <color name="text_light">#FFFFFF</color>
+    <color name="text_title">#333333</color>
+    <color name="text_content">#444444</color>
+    <color name="text_hint">#AAAAAA</color>
+    <color name="text_gray">#999999</color>
+    <color name="text_gray_dark">#666666</color>
+    <color name="transparent">#00000000</color>
+    <color name="price">#FF9C2B</color>
+    <color name="text_orange">#FA5353</color>
+    <color name="text_blue">#14ABFC</color>
+    <color name="text_blue_dark">#517FDF</color>
+    <color name="text_red">#FF4228</color>
+    <color name="text_blue_result">#517FDF</color>
+    <color name="green">#7ED321</color>
+    <color name="orange">#FDAB2B</color>
+
+    <!--Home-->
+    <color name="home_shop_select">#192C8A</color>
+    <color name="home_line">#EEEEEE</color>
+
+    <!--Button-->
+    <color name="btn_yellow_bg">#CC6D00</color>
+    <color name="btn_yellow_light_bg">#FFD33F</color>
+    <color name="btn_enable_bg">#D7D7D7</color>
+    <color name="btn_next_bg">#14ABFC</color>
+    <color name="btn_cashier_add_disable">#D7D7D7</color>
+    <color name="btn_cashier_add">#3D53C1</color>
+    <color name="btn_cashier_delete">#FF9C2B</color>
+    <color name="btn_cashier_discount">#FC464C</color>
+    <color name="dialog_confirm_btn">#33b5e5</color>
+    <color name="btn_red_bg">#E84644</color>
+
+    <!--结账页面Button-->
+    <color name="cash_btn_blue_bg">#246CE6</color>
+    <color name="cash_btn_blue_light_bg">#4BA6F4</color>
+    <color name="cash_btn_green_bg">#1ABE3C</color>
+    <color name="cash_btn_green_light_bg">#4BFF71</color>
+    <color name="cash_btn_red_bg">#E84644</color>
+    <color name="cash_btn_red_light_bg">#F57C79</color>
+    <color name="cash_btn_pink_bg">#E52270</color>
+    <color name="cash_btn_pink_light_bg">#F447A9</color>
+    <color name="cash_btn_yellow_bg">#F76B1C</color>
+    <color name="cash_btn_yellow_light_bg">#FAD961</color>
+    <color name="cash_btn_blue_l_bg">#14ABFC</color>
+    <color name="cash_btn_blue1_l_light_bg">#33b5e5</color>
+
+    <!--库存页面-->
+    <color name="stock_bg">#1F1F3780</color>
+    <color name="stock_bg_no">#1FBABABA</color>
+
+</resources>

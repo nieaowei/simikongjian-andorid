@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="@drawable/login_bg">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pos_header_height"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/icon_back"
+            android:padding="5dp"
+            android:scaleType="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/header_text_size"
+            android:text="天气分析"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/jintian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="5dp"
+            android:text="今天是"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/jintian"
+            android:text="星期六"
+            android:textColor="@color/bpRed"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/fx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="3dp"
+            android:layout_toEndOf="@+id/week"
+            android:text="东北风"
+            android:textColor="@color/bpRed"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/tianqi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="7dp"
+            android:layout_toEndOf="@+id/fx"
+            android:text="天气"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/tianqi"
+            android:text="多云"
+            android:textColor="@color/bpRed"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/wendu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/jintian"
+            android:layout_alignStart="@+id/jintian"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            android:text="温度"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/wendu"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/wendu"
+            android:text="低温 3℃"
+            android:textColor="@color/bpRed"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/aaa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/low"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_toEndOf="@+id/low"
+            android:text="-"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/wendu"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/aaa"
+            android:text="高温 6℃"
+            android:textColor="@color/bpRed"
+            android:textSize="@dimen/header_text_size" />
+
+        <TextView
+            android:id="@+id/bbb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wendu"
+            android:layout_alignStart="@+id/jintian"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="8dp"
+            android:text="温馨提示:"
+            android:textColor="@color/text_gray"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wendu"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/bbb"
+            android:text="愿你拥有比阳光明媚的心情"
+            android:textColor="@color/text_gray"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_my_picture_hh"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

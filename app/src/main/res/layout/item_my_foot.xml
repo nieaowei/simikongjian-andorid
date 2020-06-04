@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="@color/text_light"
+    android:layout_marginTop="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:layout_height="70dp">
+
+    <!--<ImageView
+        android:id="@+id/book_item_image"
+        android:layout_width="49dp"
+        android:layout_height="match_parent" />-->
+
+    <TextView
+        android:id="@+id/item_my_foot_dt"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textSize="@dimen/sp_14"
+        android:text="2020-01-01 13:21" />
+
+    <TextView
+        android:id="@+id/item_my_foot_nr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_happy_note_time"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/black"
+        android:layout_marginBottom="0dp"
+        android:enabled="true"
+        android:gravity="center"
+        android:text="上传日记"
+        android:textSize="@dimen/sp_18" />
+
+</RelativeLayout>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/dialog_vip"
+        android:layout_width="330dp"
+        android:layout_height="390dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/shape_dialog_vip_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="57dp">
+
+        <RelativeLayout
+            android:id="@+id/mypersonal_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pm_50"
+            android:padding="@dimen/pm_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="个人信息"
+                android:textColor="@color/black"
+                android:textSize="21dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/dialog_vip_line" />
+
+        <TextView
+            android:id="@+id/height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/my_height"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="0dp"
+            android:text="身高:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_26" />
+
+        <EditText
+            android:id="@+id/my_height"
+            android:layout_width="239dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mypersonal_title"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="33dp"
+            android:layout_toEndOf="@+id/height"
+            android:background="@drawable/edit_text_bg"
+            android:enabled="false"
+            android:hint="请输入身高"
+            android:maxLength="100"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:singleLine="true"
+            android:textColor="@color/text_content"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/sp_26" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/height"
+            android:layout_alignStart="@+id/height"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="23dp"
+            android:text="体重:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_26" />
+
+        <EditText
+            android:id="@+id/my_weight"
+            android:layout_width="239dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/my_height"
+            android:layout_alignStart="@+id/my_height"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="请输入体重"
+            android:enabled="false"
+            android:maxLength="100"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:singleLine="true"
+            android:textColor="@color/text_content"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/sp_26" />
+
+        <TextView
+            android:id="@+id/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weight"
+            android:layout_alignStart="@+id/height"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="23dp"
+            android:text="爱好:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_26" />
+
+        <EditText
+            android:id="@+id/my_favorite"
+            android:layout_width="239dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/my_weight"
+            android:layout_alignStart="@+id/my_height"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="请输入爱好"
+            android:maxLength="100"
+            android:enabled="false"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:singleLine="true"
+            android:textColor="@color/text_content"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/sp_26" />
+
+        <Button
+            android:id="@+id/update_my_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_common_height"
+            android:layout_below="@+id/my_favorite"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_btn_blue"
+            android:text="修改"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/commit_my_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_common_height"
+            android:layout_below="@+id/update_my_info"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_btn_blue"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_note_message" />
+        <!--<TextView
+            android:id="@+id/date_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/pm_16"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_bg"
+            android:gravity="center"
+            android:hint="点击选择日期"
+            android:maxLength="100"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:singleLine="true"
+            android:textColor="@color/text_content"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/sp_26" />-->
+
+        <!--<Button
+            android:id="@+id/set_date_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_button_height"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0.05"
+            android:background="@drawable/selector_btn_blue_strok"
+            android:orientation="horizontal"
+            android:text="设置"
+            android:textColor="@color/btn_yellow_light_bg"
+            android:textSize="@dimen/sp_18">
+
+        </Button>-->
+
+        <!--<Button
+            android:id="@+id/close_set_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_button_height"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/selector_btn_blue"
+            android:orientation="horizontal"
+            android:text="清空"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18">
+
+        </Button>-->
+
+    </RelativeLayout>
+
+</RelativeLayout>

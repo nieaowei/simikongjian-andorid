@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="@drawable/login_bg">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pos_header_height"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/icon_back"
+            android:padding="5dp"
+            android:scaleType="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/header_text_size"
+            android:text="用户信息管理"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/my_head"
+        android:layout_marginTop="20dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+
+        android:textColor="@color/white"
+        android:textSize="@dimen/pm_30" />
+
+    <RelativeLayout
+        android:id="@+id/change_head_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/bg"
+        android:clickable="true"
+        android:focusableInTouchMode="false">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="更换头像"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pm_30" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/update_pass_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/bg"
+        android:clickable="true"
+        android:focusableInTouchMode="false">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="修改密码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pm_30" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/change_user_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/bg"
+        android:clickable="true"
+        android:focusableInTouchMode="false">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="更换用户"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pm_30" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/out_soft"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/bg"
+        android:clickable="true"
+        android:focusableInTouchMode="false">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="退出系统"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pm_30" />
+    </RelativeLayout>
+
+</LinearLayout>

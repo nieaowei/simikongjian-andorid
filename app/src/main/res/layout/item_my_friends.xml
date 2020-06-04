@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="@drawable/layer_view_bg"
+    android:layout_marginTop="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:layout_height="60dp">
+
+    <!--<ImageView
+        android:id="@+id/book_item_image"
+        android:layout_width="49dp"
+        android:layout_height="match_parent" />-->
+
+    <TextView
+        android:id="@+id/item_my_friends_username"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="书书名名书书名名书名名名"
+        android:textSize="@dimen/sp_18" />
+
+</RelativeLayout>

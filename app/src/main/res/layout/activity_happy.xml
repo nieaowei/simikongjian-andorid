@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_happy"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="90dp"
+    android:background="@drawable/shape_dialog_vip_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pm_50"
+        android:padding="@dimen/pm_12">
+
+        <ImageView
+            android:id="@+id/happy_close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_close"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/dialog_vip_line"
+        />
+
+    <EditText
+        android:id="@+id/happy_pass"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_button_height"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/pm_16"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/edit_text_bg"
+        android:gravity="center"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:maxLength="15"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textColor="@color/text_content"
+        android:textColorHint="@color/text_hint"
+        android:textSize="@dimen/sp_18" />
+
+    <Button
+        android:id="@+id/happy_ok_btn"
+        android:layout_width="220dp"
+        android:layout_height="@dimen/dialog_button_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.05"
+        android:background="@drawable/selector_btn_blue_strok"
+        android:textColor="@color/btn_yellow_light_bg"
+        android:orientation="horizontal"
+        android:text= "确定"
+        android:textSize="@dimen/sp_18">
+
+    </Button>
+
+    <Button
+        android:id="@+id/happy_reset_btn"
+        android:layout_width="220dp"
+        android:layout_height="@dimen/dialog_button_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/selector_btn_blue"
+        android:orientation="horizontal"
+        android:text="重置"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_18">
+
+    </Button>
+
+</LinearLayout>

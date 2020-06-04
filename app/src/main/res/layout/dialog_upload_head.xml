@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/create_user_dialog_view"
+    android:layout_width="fill_parent"
+    android:layout_height="400dp"
+    android:background="@drawable/card_white_bg"
+    android:minWidth="200dp"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingBottom="30dp">
+
+    <ImageView
+        android:id="@+id/head_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/head_url"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/pm_16"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/edit_text_bg"
+        android:maxLength="100"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textColor="@color/text_content"
+        android:textColorHint="@color/text_hint"
+        android:textSize="@dimen/sp_12" />
+    <Button
+        android:id="@+id/select_head_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_common_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/selector_btn_blue"
+        android:orientation="horizontal"
+        android:textColor="@color/white"
+        android:text="选择头像"
+        android:textSize="@dimen/sp_18">
+
+    </Button>
+    <Button
+        android:id="@+id/upload_head_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_common_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_btn_blue"
+        android:orientation="horizontal"
+        android:textColor="@color/white"
+        android:text="上传"
+        android:textSize="@dimen/sp_18">
+
+    </Button>
+</LinearLayout>
