@@ -28,6 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 
 import org.json.JSONObject;
 
@@ -110,8 +111,9 @@ public class SettingActivity extends AppCompatActivity {
     private void initData() {
         //refresh();
         selectHead();
-        Bitmap bitmap = MyPictureUtils.stringtoBitmap(bookList.get(0).getKeys());
-        imageView.setImageBitmap(bitmap);
+//        Bitmap bitmap = MyPictureUtils.stringtoBitmap(bookList.get(0).getKeys());
+//        imageView.setImageBitmap(bitmap);
+        Glide.with(this).load(bookList.get(0).url).into(imageView);
     }
 
     @OnClick({R.id.change_head_btn, R.id.update_pass_btn,R.id.change_user_btn,R.id.out_soft,R.id.back_btn})
@@ -355,23 +357,26 @@ public class SettingActivity extends AppCompatActivity {
                 String result1 = RequestUtils.stremToString(inputStream);
                 RESULT = result1;
                 if (!RESULT.equals("")){
-                    RESULT.replaceAll("\\[]", "");
-                    String str= RESULT.replaceAll("\"", "");
-                    String[] arr = str.split(",");
-                    for(int i=0;i<arr.length;i++){
-                        PictureModel pictureModel = new PictureModel();
-                        String a = "";
-                        if (i==0){
-                            a = arr[i].substring(1,arr[i].length());
-                            pictureModel.setKeys(a);
-                        }else if (i==arr.length-1){
-                            a = arr[i].substring(0,arr[i].length()-1);
-                        }else{
-                            a = arr[i];
-                        }
-                        pictureModel.setKeys(a);
-                        bookList.add(pictureModel);
-                    }
+                    PictureModel pictureModel = new PictureModel();
+                    pictureModel.url=RESULT;
+                    bookList.add(pictureModel);
+//                    RESULT.replaceAll("\\[]", "");
+//                    String str= RESULT.replaceAll("\"", "");
+//                    String[] arr = str.split(",");
+//                    for(int i=0;i<arr.length;i++){
+//                        PictureModel pictureModel = new PictureModel();
+//                        String a = "";
+//                        if (i==0){
+//                            a = arr[i].substring(1,arr[i].length());
+//                            pictureModel.setKeys(a);
+//                        }else if (i==arr.length-1){
+//                            a = arr[i].substring(0,arr[i].length()-1);
+//                        }else{
+//                            a = arr[i];
+//                        }
+//                        pictureModel.setKeys(a);
+//                        bookList.add(pictureModel);
+//                    }
                     //Toast.makeText(WeekDayBirthdayActivity.this, "设置完成！", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(SettingActivity.this, "请求失败,请检查网络！", Toast.LENGTH_SHORT).show();
