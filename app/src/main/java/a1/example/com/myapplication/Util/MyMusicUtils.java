@@ -1,7 +1,7 @@
 package a1.example.com.myapplication.Util;
 
-import android.app.Activity;
 import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import java.io.File;
@@ -68,7 +68,7 @@ public class MyMusicUtils {
      * @param message    String类型            将显示的提示信息内容
      * @param isLong     boolean类型         如果为"true"表示长时间显示，否则为短时间显示
      */
-    public static void showToast(Activity activity,String message,boolean isLong){
+    public static void showToast(AppCompatActivity activity, String message, boolean isLong){
         if (message == null ||message.equals(""))
             return ;
         int showTime = Toast.LENGTH_SHORT;
@@ -87,7 +87,7 @@ public class MyMusicUtils {
      * @param message    String类型            将显示的提示信息内容
      * @param isLong     boolean类型         如果为"true"表示长时间显示，否则为短时间显示
      */
-    public static void showToastAndTitle(Activity activity, String message, boolean isLong){
+    public static void showToastAndTitle(AppCompatActivity activity, String message, boolean isLong){
         activity.setTitle(message);
         showToast(activity, message, isLong);
     }

@@ -152,7 +152,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/folderpicturesalternative"
+                app:srcCompat="@drawable/folderpicturesalternative"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -194,7 +194,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/icon_over_duty"
+                app:srcCompat="@drawable/icon_over_duty"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -236,7 +236,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/icon_search_ticket"
+                app:srcCompat="@drawable/icon_search_ticket"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -277,7 +277,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/icon_draw_money"
+                app:srcCompat="@drawable/icon_draw_money"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -318,7 +318,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/icon_other_income"
+                app:srcCompat="@drawable/icon_other_income"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -357,7 +357,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/icon_on_duty"
+                app:srcCompat="@drawable/icon_on_duty"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -398,7 +398,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/app"
+                app:srcCompat="@drawable/app"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -437,7 +437,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/hhhome"
+                app:srcCompat="@drawable/hhhome"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -476,7 +476,7 @@
                 android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/internagreen"
+                app:srcCompat="@drawable/internagreen"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

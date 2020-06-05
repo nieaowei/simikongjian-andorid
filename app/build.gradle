@@ -70,9 +70,9 @@ dependencies {
     implementation 'javax.xml.stream:stax-api:1.0-2'
 
     implementation 'am.util:printer:2.1.0'
-    compile 'com.github.bumptech.glide:glide:3.5.2'
-    compile 'com.android.support:support-v4:22.0.0'
+    implementation 'com.github.bumptech.glide:glide:3.5.2'
+    implementation 'com.haibin:calendarview:3.6.8'
 
-    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.70'
+    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.70'
 
 }

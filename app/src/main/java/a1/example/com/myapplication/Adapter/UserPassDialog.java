@@ -1,17 +1,14 @@
 package a1.example.com.myapplication.Adapter;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import a1.example.com.myapplication.R;
 
@@ -21,7 +18,7 @@ public class UserPassDialog extends Dialog {
     /**
      * 上下文对象 *
      */
-    Activity context;
+    AppCompatActivity context;
 
     public Button ok_btn;
 
@@ -36,12 +33,12 @@ public class UserPassDialog extends Dialog {
 
     public View.OnClickListener mClickListener;
 
-    public UserPassDialog(Activity context) {
+    public UserPassDialog(AppCompatActivity context) {
         super(context);
         this.context = context;
     }
 //View.OnClickListener clickListener
-    public UserPassDialog(Activity context, int theme,View.OnClickListener clickListener) {
+    public UserPassDialog(AppCompatActivity context, int theme, View.OnClickListener clickListener) {
         super(context, theme);
         this.context = context;
         this.mClickListener = clickListener;

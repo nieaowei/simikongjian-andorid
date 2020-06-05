@@ -1,8 +1,8 @@
 package a1.example.com.myapplication.Adapter;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
@@ -18,7 +18,7 @@ public class UploadHeadDialog extends Dialog {
     /**
      * 上下文对象 *
      */
-    Activity context;
+    AppCompatActivity context;
 
     public ImageView head_image;
 
@@ -31,12 +31,12 @@ public class UploadHeadDialog extends Dialog {
 
     public View.OnClickListener mClickListener;
 
-    public UploadHeadDialog(Activity context) {
+    public UploadHeadDialog(AppCompatActivity context) {
         super(context);
         this.context = context;
     }
     //View.OnClickListener clickListener
-    public UploadHeadDialog(Activity context, int theme,View.OnClickListener clickListener) {
+    public UploadHeadDialog(AppCompatActivity context, int theme, View.OnClickListener clickListener) {
         super(context, theme);
         this.context = context;
         this.mClickListener = clickListener;

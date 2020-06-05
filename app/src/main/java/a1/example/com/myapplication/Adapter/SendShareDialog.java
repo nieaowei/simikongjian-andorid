@@ -1,17 +1,11 @@
 package a1.example.com.myapplication.Adapter;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,7 +33,7 @@ public class SendShareDialog extends AppCompatActivity {
     /**
      * 上下文对象 *
      */
-    Activity context;
+    AppCompatActivity context;
 
     public EditText my_friends_shares_message;
 

@@ -1,7 +1,6 @@
 package a1.example.com.myapplication.Util;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +11,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,7 +31,7 @@ public class PhotoUtils {
          * @param imageUri    拍照后照片存储路径
          * @param requestCode 调用系统相机请求码
          */
-        public static void takePicture(Activity activity, Uri imageUri, int requestCode) {
+        public static void takePicture(AppCompatActivity activity, Uri imageUri, int requestCode) {
             //调用系统相机
             Intent intentCamera = new Intent();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -47,7 +47,7 @@ public class PhotoUtils {
          * @param activity    当前activity
          * @param requestCode 打开相册的请求码
          */
-        public static void openPic(Activity activity, int requestCode) {
+        public static void openPic(AppCompatActivity activity, int requestCode) {
             Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
             photoPickerIntent.setType("image/*");
             activity.startActivityForResult(photoPickerIntent, requestCode);
@@ -63,7 +63,7 @@ public class PhotoUtils {
          * @param height      剪裁图片高度
          * @param requestCode 剪裁图片的请求码
          */
-        public static void cropImageUri(Activity activity, Uri orgUri, Uri desUri, int aspectX, int aspectY, int width, int height, int requestCode) {
+        public static void cropImageUri(AppCompatActivity activity, Uri orgUri, Uri desUri, int aspectX, int aspectY, int width, int height, int requestCode) {
             Intent intent = new Intent("com.android.camera.action.CROP");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
