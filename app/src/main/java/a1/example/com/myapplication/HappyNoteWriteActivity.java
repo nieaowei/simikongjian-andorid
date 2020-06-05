@@ -1,6 +1,9 @@
 package a1.example.com.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,18 +12,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.Map;
 
+import a1.example.com.myapplication.Model.WeatherModel;
+import a1.example.com.myapplication.Util.GsonUtil;
 import a1.example.com.myapplication.Util.MyWriteUtils;
+import a1.example.com.myapplication.Util.OkHttpUtil;
 import a1.example.com.myapplication.Util.RecordUserFootUtil;
 import a1.example.com.myapplication.Util.RequestUtils;
 import butterknife.BindView;
@@ -30,6 +46,10 @@ import butterknife.OnClick;
 public class HappyNoteWriteActivity extends AppCompatActivity {
     @BindView(R.id.back_btn)
     ImageView backBtn;
+    @BindView(R.id.tv_weather)
+    TextView myWeather;
+    @BindView(R.id.tv_city)
+    TextView myCity;
     @BindView(R.id.my_note_title)
     EditText myNoteTitle;
     @BindView(R.id.my_note_message)
@@ -39,6 +59,8 @@ public class HappyNoteWriteActivity extends AppCompatActivity {
 
     String USERNAME = "";
     String RESULT = "";
+    String type = "";//天气
+    boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +73,75 @@ public class HappyNoteWriteActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        Intent intent = getIntent();
-        String action = intent.getAction();
-        if(action.equals("user")){
-            String username = intent.getStringExtra("username");
-            USERNAME = username;
+//        Intent intent = getIntent();
+//        String action = intent.getAction();
+//        if(action.equals("user")){
+//            String username = intent.getStringExtra("username");
+//            USERNAME = username;
+//        }
+
+        SharedPreferences preferences = getSharedPreferences("user",0);
+        USERNAME = preferences.getString("username","");
+        getCity();
+        getWeather();
+    }
+
+    private void getWeather(){
+        URL url = null;
+        String urlStr = MyWriteUtils.MyURL+"/selectWether";
+        String result="";//要返回的结果
+
+        com.alibaba.fastjson.JSONObject jsonObject = new com.alibaba.fastjson.JSONObject();
+        jsonObject.put("username",USERNAME);
+        try {
+            result = OkHttpUtil.doPostHttpRequest2(urlStr, jsonObject.toJSONString());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        Log.d("[result]", result);
+        JSONArray jsonArray = JSONArray.parseArray(result);
+        com.alibaba.fastjson.JSONObject data = jsonArray.getJSONObject(0);
+        String date = data.getString("ymd");
+        String week = data.getString("week");
+        type = data.getString("type");
+        myWeather.append(date + " " + week + " " + type);
+    }
+
+    private void getCity(){
+        String strUrl = "http://whois.pconline.com.cn/ipJson.jsp?json=true";
+        com.alibaba.fastjson.JSONObject jsonObject = new com.alibaba.fastjson.JSONObject();
+        try {
+            URL url = new URL(strUrl);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod("GET");
+            httpURLConnection.setRequestProperty("Content-Type", "application/json");
+            httpURLConnection.setRequestProperty("Connection", "Keep-Alive");
+            httpURLConnection.setRequestProperty("Charset", "GB2312");
+            httpURLConnection.setConnectTimeout(15000);
+            httpURLConnection.setReadTimeout(60000);
+            httpURLConnection.connect();
+            if (httpURLConnection.getResponseCode() == 200){
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(httpURLConnection.getInputStream(), "GB2312"));
+                String line = null;
+                StringBuffer stringBuffer = new StringBuffer();
+                while ((line = reader.readLine()) != null){
+                    stringBuffer.append(line);
+                }
+                Log.d("【str】", stringBuffer.toString());
+                jsonObject = JSON.parseObject(stringBuffer.toString());
+                reader.close();
+            }
+            httpURLConnection.disconnect();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            setTitle(e.getMessage());
+        }
+        Log.d("【jsonObject】", jsonObject.toJSONString());
+        String city = jsonObject.getString("city");
+        Log.d("【city】", city);
+        myCity.append(city + "\n");
     }
 
     @Override
@@ -77,12 +162,18 @@ public class HappyNoteWriteActivity extends AppCompatActivity {
                 onBackPressed();
                 break;
             case R.id.commit_my_note:
-                commitMyNote(myNoteTitle.getText().toString().trim(),myNoteMessage.getText().toString().trim());
+                commitMyNote(myNoteTitle.getText().toString().trim(),
+                        myNoteMessage.getText().toString().trim(),
+                        myCity.getText().toString().trim(),
+                        type);
                 break;
         }
     }
 
-    private void commitMyNote(String myNoteTitles,String myNoteMessages) {
+    private void commitMyNote(String myNoteTitles,
+                              String myNoteMessages,
+                              String myCity,
+                              String myWeather) {
         URL url = null;
         String urlStr = MyWriteUtils.MyURL+"/writenote";
         String result="";//要返回的结果
@@ -124,6 +215,9 @@ public class HappyNoteWriteActivity extends AppCompatActivity {
             userJSON.put("notetitle",myNoteTitles);
             userJSON.put("note",myNoteMessages);
             userJSON.put("noteuser",USERNAME);
+            userJSON.put("address",myCity);
+            userJSON.put("weather",myWeather);
+            Log.d("【userJSON】",userJSON.toString());
             String content = String.valueOf(userJSON);
 
             os.write(content.getBytes());

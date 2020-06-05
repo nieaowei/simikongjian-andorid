@@ -94,4 +94,24 @@
             android:textSize="@dimen/pm_30" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/my_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/bg"
+        android:clickable="true"
+        android:focusableInTouchMode="false">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的日历"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pm_30" />
+    </RelativeLayout>
+
 </LinearLayout>

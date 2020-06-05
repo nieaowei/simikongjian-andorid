@@ -20,7 +20,7 @@
             android:layout_alignParentLeft="true"
             android:padding="5dp"
             android:scaleType="center"
-            app:srcCompat="@drawable/icon_back" />
+            android:src="@drawable/icon_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,12 +33,40 @@
 
     </RelativeLayout>
 
+
+    <TextView
+        android:id="@+id/tv_city"
+        android:layout_width="359dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+    <TextView
+        android:id="@+id/tv_weather"
+        android:layout_width="334dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_city" />
+
     <EditText
         android:id="@+id/my_note_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="18dp"
         android:background="@android:drawable/edit_text"
         android:enabled="true"
@@ -46,15 +74,16 @@
         android:text="2222"
         android:textSize="@dimen/sp_24"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_weather" />
 
     <EditText
         android:id="@+id/my_note_message"
         android:layout_width="365dp"
         android:layout_height="323dp"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="18dp"
         android:background="@android:drawable/edit_text"
         android:enabled="true"
@@ -66,7 +95,6 @@
         android:padding="@dimen/sp_12"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_note_title" />
 
@@ -83,6 +111,8 @@
         android:textSize="@dimen/sp_18"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_note_message" />
+
 </android.support.constraint.ConstraintLayout>

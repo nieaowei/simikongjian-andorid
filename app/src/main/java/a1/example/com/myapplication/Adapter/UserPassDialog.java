@@ -1,14 +1,17 @@
 package a1.example.com.myapplication.Adapter;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import a1.example.com.myapplication.R;
 
@@ -18,11 +21,13 @@ public class UserPassDialog extends Dialog {
     /**
      * 上下文对象 *
      */
-    AppCompatActivity context;
+    Activity context;
 
     public Button ok_btn;
 
     public Button return_btn;
+
+    public EditText user_old_password;
 
     public EditText user_name_ok;
 
@@ -33,12 +38,12 @@ public class UserPassDialog extends Dialog {
 
     public View.OnClickListener mClickListener;
 
-    public UserPassDialog(AppCompatActivity context) {
+    public UserPassDialog(Activity context) {
         super(context);
         this.context = context;
     }
-//View.OnClickListener clickListener
-    public UserPassDialog(AppCompatActivity context, int theme, View.OnClickListener clickListener) {
+    //View.OnClickListener clickListener
+    public UserPassDialog(Activity context, int theme,View.OnClickListener clickListener) {
         super(context, theme);
         this.context = context;
         this.mClickListener = clickListener;
@@ -50,6 +55,7 @@ public class UserPassDialog extends Dialog {
         // 指定布局
         this.setContentView(R.layout.dialog_user);
 
+        user_old_password = (EditText) findViewById(R.id.et_old_password);
         user_name_ok = (EditText) findViewById(R.id.user_name_ok);
         username_pass = (EditText) findViewById(R.id.username_pass);
         username_pass_ok = (EditText) findViewById(R.id.username_pass_ok);
@@ -66,7 +72,7 @@ public class UserPassDialog extends Dialog {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
-        p.height = (int) (height* 0.7); // 高度设置为屏幕的0.6
+        p.height = (int) (height* 0.9); // 高度设置为屏幕的0.6
         p.width = (int) (width * 0.9); // 宽度设置为屏幕的0.8
         dialogWindow.setAttributes(p);
 

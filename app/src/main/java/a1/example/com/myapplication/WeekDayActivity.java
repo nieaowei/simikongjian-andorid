@@ -28,6 +28,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import a1.example.com.myapplication.Cad.CustomActivity;
 import a1.example.com.myapplication.Model.UserModel;
 import a1.example.com.myapplication.Model.WeekDayModel;
 import a1.example.com.myapplication.Util.MyWriteUtils;
@@ -43,6 +44,8 @@ public class WeekDayActivity extends AppCompatActivity {
     RelativeLayout myDayBtn;
     @BindView(R.id.holiday_btn)
     RelativeLayout holidayBtn;
+    @BindView(R.id.my_btn)
+    RelativeLayout my_btn;
     @BindView(R.id.back_btn)
     ImageView backBtn;
     String USERNAME = "";
@@ -64,7 +67,7 @@ public class WeekDayActivity extends AppCompatActivity {
         }
     }
 
-        @OnClick({R.id.set_birthday_btn, R.id.my_day_btn,R.id.holiday_btn,R.id.back_btn})
+        @OnClick({R.id.set_birthday_btn, R.id.my_day_btn,R.id.holiday_btn,R.id.back_btn,R.id.my_btn})
         public void onClick(View view) {
             switch (view.getId()) {
                 case (R.id.set_birthday_btn):
@@ -84,6 +87,15 @@ public class WeekDayActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                     break;
+                case R.id.my_btn:{
+                    Intent intent1 = new Intent();
+                    intent1.setClass(WeekDayActivity.this, CustomActivity.class);
+                    intent1.setAction("user");
+                    intent1.putExtra("username",USERNAME);
+                    startActivity(intent1);
+                    finish();
+                    break;
+                }
             }
         }
     @Override
