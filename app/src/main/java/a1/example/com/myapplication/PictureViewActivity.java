@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-
 import org.json.JSONObject;
 
 import java.io.InputStream;
@@ -24,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import a1.example.com.myapplication.Adapter.PictureAdapter;
+import a1.example.com.myapplication.Adapter.SendShareDialog;
 import a1.example.com.myapplication.Model.PictureModel;
 import a1.example.com.myapplication.Util.MyWriteUtils;
 import a1.example.com.myapplication.Util.RequestUtils;
@@ -34,6 +34,9 @@ public class PictureViewActivity extends AppCompatActivity {
     private ListView listView;
     String USERNAME = "";
     String RESULT = "";
+    String ACTION = "";
+    String PICURL = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,47 +48,79 @@ public class PictureViewActivity extends AppCompatActivity {
         }
         Intent intent = getIntent();
         String action = intent.getAction();
-        if(action.equals("user")){
+        if (action.equals("user")) {
             String username = intent.getStringExtra("username");
             USERNAME = username;
+//            ACTION =
+        }
+
+
+        if (action.equals("friends")) {
+            ACTION = "friends";
+            String username = intent.getStringExtra("username");
+            USERNAME = username;
+
         }
         initData();
+
     }
 
     private void initData() {
         myPictureRequest();
-        adapterListView = new PictureAdapter(PictureViewActivity.this,R.layout.item_picture_view,pictureList);
-        listView = (ListView)findViewById(R.id.list_my_picture);
+        adapterListView = new PictureAdapter(PictureViewActivity.this, R.layout.item_picture_view, pictureList);
+        listView = (ListView) findViewById(R.id.list_my_picture);
         listView.setAdapter(adapterListView);
         //设置listview点击事件
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                HappyNoteModel book = bookList.get(i);
-                Toast.makeText(HappyNoteMineActivity.this,book.getNote().toString(),Toast.LENGTH_LONG).show();
-            }
-        });*/
+
+        if(ACTION.equals("friends")){
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent3 = new Intent();
+                    intent3.setClass(PictureViewActivity.this, SendShareDialog.class);
+                    intent3.setAction("pic");
+                    intent3.putExtra("username", USERNAME);
+                    intent3.putExtra("pic",pictureList.get(i).url);
+                    startActivity(intent3);
+                    finish();
+
+                }
+            });
+        }
+
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();//注释掉这行,back键不退出activity
-        Intent intent = new Intent();
-        intent.setClass(PictureViewActivity.this, PictureActivity.class);
-        intent.setAction("user");
-        intent.putExtra("username",USERNAME);
-        startActivity(intent);
-        finish();
+        if (ACTION.equals("friends")) {
+            Intent intent = new Intent();
+            intent.setClass(PictureViewActivity.this, SendShareDialog.class);
+            intent.setAction("pic");
+            intent.putExtra("username", USERNAME);
+            intent.putExtra("pic", PICURL);
+
+            startActivity(intent);
+            finish();
+        } else {
+
+            Intent intent = new Intent();
+            intent.setClass(PictureViewActivity.this, PictureActivity.class);
+            intent.setAction("user");
+            intent.putExtra("username", USERNAME);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void myPictureRequest() {
         URL url = null;
-        String urlStr = MyWriteUtils.MyURL+"/selectImage?username="+USERNAME;
-        String result="";//要返回的结果
+        String urlStr = MyWriteUtils.MyURL + "/selectImage?username=" + USERNAME;
+        String result = "";//要返回的结果
 
         try {
-            url=new URL(urlStr);
-            HttpURLConnection httpURLConnection= (HttpURLConnection) url.openConnection();
+            url = new URL(urlStr);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setConnectTimeout(50000);//设置连接超时时间，单位ms
             httpURLConnection.setReadTimeout(50000);//设置读取超时时间，单位ms
             //设置是否向httpURLConnection输出，因为post请求参数要放在http正文内，所以要设置为true
@@ -106,7 +141,7 @@ public class PictureViewActivity extends AppCompatActivity {
             //httpURLConnection.connect();
             //getOutputStream会隐含调用connect()，所以不用写上述的httpURLConnection.connect()也行。
             //得到httpURLConnection的输出流
-            OutputStream os= httpURLConnection.getOutputStream();
+            OutputStream os = httpURLConnection.getOutputStream();
             //UserInfoModel userModel = new UserInfoModel() ;
             //dataPost类是自定义的数据交互对象，只有两个成员变量
             /*JSONObject userJSON = new JSONObject();
@@ -118,12 +153,12 @@ public class PictureViewActivity extends AppCompatActivity {
             os.close();
 
             //将内存缓冲区中封装好的完整的HTTP请求电文发送到服务端，并获取访问状态
-            if(HttpURLConnection.HTTP_OK==httpURLConnection.getResponseCode()){
+            if (HttpURLConnection.HTTP_OK == httpURLConnection.getResponseCode()) {
 
                 InputStream inputStream = httpURLConnection.getInputStream();
                 String result1 = RequestUtils.stremToString(inputStream);
                 RESULT = result1;
-                if (!RESULT.equals("")){
+                if (!RESULT.equals("")) {
 //                    RESULT.replaceAll("\\[]", "");
 //                    String str= RESULT.replaceAll("\"", "");
                     String[] arr = RESULT.split(",");
@@ -144,17 +179,18 @@ public class PictureViewActivity extends AppCompatActivity {
                     for (String str :
                             arr) {
                         PictureModel pi = new PictureModel();
-                        pi.url=str;
+                        pi.url = str;
                         pictureList.add(pi);
                     }
 
-                }else{
+                } else {
                     Toast.makeText(PictureViewActivity.this, "设置失败,请检查网络！", Toast.LENGTH_SHORT).show();
-                };
+                }
+                ;
                 httpURLConnection.disconnect();
 
-            }else{
-                Log.w("HTTP","Connction failed"+httpURLConnection.getResponseCode());
+            } else {
+                Log.w("HTTP", "Connction failed" + httpURLConnection.getResponseCode());
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -70,6 +70,8 @@
         <activity android:name=".GameShopStudyDetailActivity" />
         <activity android:name=".MyFriendsListActivity" />
         <activity android:name=".MyFriendsSharesActivity" />
+        <activity android:name=".Adapter.SendShareDialog" />
+
         <activity android:name=".ClothFenxiActivity"></activity>
     </application>
 
