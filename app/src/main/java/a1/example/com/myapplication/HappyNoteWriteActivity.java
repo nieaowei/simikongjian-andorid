@@ -108,7 +108,7 @@ public class HappyNoteWriteActivity extends AppCompatActivity {
     }
 
     private void getCity(){
-        String strUrl = "http://whois.pconline.com.cn/ipJson.jsp?json=true";
+        String strUrl = MyWriteUtils.MyURL+"/findIndex";
         com.alibaba.fastjson.JSONObject jsonObject = new com.alibaba.fastjson.JSONObject();
         try {
             URL url = new URL(strUrl);
@@ -116,13 +116,13 @@ public class HappyNoteWriteActivity extends AppCompatActivity {
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
             httpURLConnection.setRequestProperty("Connection", "Keep-Alive");
-            httpURLConnection.setRequestProperty("Charset", "GB2312");
+            httpURLConnection.setRequestProperty("Charset", "UTF-8");
             httpURLConnection.setConnectTimeout(15000);
             httpURLConnection.setReadTimeout(60000);
             httpURLConnection.connect();
             if (httpURLConnection.getResponseCode() == 200){
                 BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(httpURLConnection.getInputStream(), "GB2312"));
+                        new InputStreamReader(httpURLConnection.getInputStream(), "UTF-8"));
                 String line = null;
                 StringBuffer stringBuffer = new StringBuffer();
                 while ((line = reader.readLine()) != null){

@@ -164,11 +164,12 @@ public class SettingActivity extends AppCompatActivity {
                     String user_name_ok = createUserDialog.user_name_ok.getText().toString().trim();
                     String username_pass = createUserDialog.username_pass.getText().toString().trim();
                     String username_pass_ok = createUserDialog.username_pass_ok.getText().toString().trim();
+                    String old = createUserDialog.user_old_password.getText().toString().trim();
 
                     if (!username_pass.equals(username_pass_ok)){
                         Toast.makeText(SettingActivity.this, "两次输入密码不一致！", Toast.LENGTH_SHORT).show();
                     }else {
-                        updatePass(user_name_ok,username_pass_ok);
+                        updatePass(user_name_ok,username_pass_ok,old);
                     }
 
                     break;
@@ -275,8 +276,8 @@ public class SettingActivity extends AppCompatActivity {
         }
     }
 
-    public void updatePass(String user_name_ok, String username_pass_ok) {
-        String urlpath = MyWriteUtils.MyURL+"/updatePass?username="+user_name_ok+"&password="+ username_pass_ok;
+    public void updatePass(String user_name_ok, String username_pass_ok,String old) {
+        String urlpath = MyWriteUtils.MyURL+"/updatePass?username="+user_name_ok+"&password="+ username_pass_ok+"&oldpassword="+old;
         try{
             URL url = new URL(urlpath);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
