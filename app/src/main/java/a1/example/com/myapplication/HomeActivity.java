@@ -50,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.setting_btn)
     ConstraintLayout settingBtn;
     String USERNAME = "";
+    private Intent alarm_intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +66,12 @@ public class HomeActivity extends AppCompatActivity {
             String username = intent.getStringExtra("username");
             USERNAME = username;
         }
-        notice();
+//        notice();
+        alarm_intent = new Intent(this, LongRunningService.class);
+        //开启关闭Service
+        startService(alarm_intent);
     }
+
     private void notice(){
         URL url = null;
         String urlStr = MyWriteUtils.MyURL+"/selectWeekDay";

@@ -38,13 +38,13 @@
         </activity>
         
         <receiver
-            android:name=".MyReceiver"
+            android:name=".AlarmReceiver"
             android:enabled="true"
             android:exported="false">
 
         </receiver>
 
-        <service android:name=".MyNewIntenService"
+        <service android:name=".LongRunningService"
             android:exported="false"></service>
 
         <uses-library

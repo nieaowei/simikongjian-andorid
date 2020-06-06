@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.*;
 
 
@@ -54,9 +55,12 @@ public class MainActivity extends AppCompatActivity {
     EditText userPass;
     String RESULT = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //取消标题栏
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -64,11 +68,12 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        Context context = this.getApplicationContext();
-        Intent notifyIntent = new Intent(this, MyReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,0,notifyIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Activity.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,System.currentTimeMillis(),100*60*60*24,pendingIntent);
+//        Context context = this.getApplicationContext();
+//        Intent notifyIntent = new Intent(this, MyReceiver.class);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,0,notifyIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(Activity.ALARM_SERVICE);
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,System.currentTimeMillis(),100*60*60*24,pendingIntent);
+
     }
 
 
