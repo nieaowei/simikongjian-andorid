@@ -19,6 +19,8 @@ import com.haibin.calendarview.CalendarView;
 
 import org.json.JSONObject;
 
+import a1.example.com.myapplication.GameShopActivity;
+import a1.example.com.myapplication.HomeActivity;
 import a1.example.com.myapplication.Model.UserModel;
 import a1.example.com.myapplication.R;
 import a1.example.com.myapplication.Util.MyWriteUtils;
@@ -274,6 +276,17 @@ public class CustomActivity extends BaseActivity implements
     @Override
     public void onYearChange(int year) {
         mTextMonthDay.setText(String.valueOf(year));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();//注释掉这行,back键不退出activity
+        Intent intent = new Intent();
+        intent.setClass(CustomActivity.this, WeekDayActivity.class);
+        intent.setAction("user");
+        intent.putExtra("username",USERNAME);
+        startActivity(intent);
+        finish();
     }
 
 

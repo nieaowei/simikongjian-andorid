@@ -1,13 +1,17 @@
 package a1.example.com.myapplication;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
+
 
 import com.alibaba.fastjson.JSONArray;
 
@@ -21,16 +25,41 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import a1.example.com.myapplication.Model.UserModel;
 import a1.example.com.myapplication.Util.MyWriteUtils;
+import in.srain.cube.views.ptr.util.PtrLocalDisplay;
+
+import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
         //设置通知内容并在onReceive()这个函数执行时开启
-        NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification.Builder builder = new Notification.Builder(context);
+        String text = getMyText(context);
+//        Log.d("【xxxxx】","xxxxx");
+        if (!text.equals("")){
+            NotificationManager manager=(NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+            //需添加的代码
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                String channelId = "default";
+                String channelName = "默认通知";
+                manager.createNotificationChannel(new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH));
+            }
+            //
+            Notification notification =new NotificationCompat.Builder(context,"default")
+                    .setContentTitle("【纪念日提醒】")
+                    .setContentText(text)
+                    .setWhen(System.currentTimeMillis())
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
+                    .build();
+            manager.notify(1,notification);
+        }
+
+    }
+
+
+    private String getMyText(Context context){
         URL url = null;
         String urlStr = MyWriteUtils.MyURL+"/selectWeekDay";
         String result="";//要返回的结果
@@ -70,7 +99,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             SharedPreferences preferences = context.getSharedPreferences("user",0);
             String USERNAME = preferences.getString("username","");
 
-            UserModel userModel = new UserModel() ;
+//            UserModel userModel = new UserModel() ;
             //dataPost类是自定义的数据交互对象，只有两个成员变量
             JSONObject userJSON = new JSONObject();
             userJSON.put("createby",USERNAME);
@@ -94,12 +123,10 @@ public class AlarmReceiver extends BroadcastReceiver {
                     com.alibaba.fastjson.JSONObject jsonObject = array.getJSONObject(i);
                     String strDate = jsonObject.getString("birthday");
                     String mytext = jsonObject.getString("shenfen");
-                    if (strDate.equals(getStringDateShort())){
-                        //Toast.makeText(this, "【纪念日提醒】" + mytext, Toast.LENGTH_SHORT).show();
-                        builder.setContentTitle("【纪念日提醒】")
-                                .setContentText(mytext)
-                                .setSmallIcon(R.mipmap.ic_launcher_round);
-                        manager.notify(0, builder.build()); //API15以及以下需要把.build()方法需要换成.getNotification()
+                    String[] date = strDate.split("-");
+                    String[] nowdate = getStringDateShort().split("-");
+                    if (date[1].equals(nowdate[1]) && date[2].equals(nowdate[2])){
+                        return mytext;
                     }
                 }
                 httpURLConnection.disconnect();
@@ -110,21 +137,15 @@ public class AlarmReceiver extends BroadcastReceiver {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//
-//        notification.defaults = Notification.DEFAULT_ALL;
-//        manager.notify(1, notification);
 
-
-        //再次开启LongRunningService这个服务，从而可以
-        Intent i = new Intent(context, LongRunningService.class);
-        context.startService(i);
+        return "";
     }
 
-
-
-    private String getStringDateShort(){
-        Date curr = new Date();
+    public static String getStringDateShort() {
+        Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        return formatter.format(curr);
+        String dateString = formatter.format(currentTime);
+        return dateString;
     }
+
 }

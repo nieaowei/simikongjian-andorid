@@ -36,16 +36,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <receiver
-            android:name=".AlarmReceiver"
-            android:enabled="true"
-            android:exported="false">
 
+        <service android:name=".LongRunningService" >
+        </service>
+
+        <receiver android:name=".AlarmReceiver" >
         </receiver>
-
-        <service android:name=".LongRunningService"
-            android:exported="false"></service>
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -83,7 +79,7 @@
         <activity android:name=".Adapter.SendShareDialog" />
         <activity android:name=".ClothFenxiActivity" />
     </application>
-    
-    
+
+
 
 </manifest>
