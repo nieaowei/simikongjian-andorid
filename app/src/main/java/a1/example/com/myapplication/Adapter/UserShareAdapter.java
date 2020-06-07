@@ -1,13 +1,17 @@
 package a1.example.com.myapplication.Adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -36,6 +40,7 @@ public class UserShareAdapter extends ArrayAdapter<UserShareModel> {
             viewHolder.sharename = (TextView)view.findViewById(R.id.my_friends_shares_name);
             viewHolder.sharenr = (TextView)view.findViewById(R.id.my_friends_shares_nr);
             viewHolder.sharedt = (TextView)view.findViewById(R.id.my_friends_shares_dt);
+            viewHolder.img = (ImageView)view.findViewById(R.id.share_img);
 
             view.setTag(viewHolder);//将viewHolder存储在view中
         }else{
@@ -46,6 +51,7 @@ public class UserShareAdapter extends ArrayAdapter<UserShareModel> {
         viewHolder.sharename.setText(userShare.getUsername());
         viewHolder.sharenr.setText(userShare.getShares());
         viewHolder.sharedt.setText(userShare.getSharesdt());
+        Glide.with(this.getContext()).load(userShare.getSharesurl()).into(viewHolder.img);
 
         return view;
     }
@@ -54,5 +60,6 @@ public class UserShareAdapter extends ArrayAdapter<UserShareModel> {
         TextView sharename;
         TextView sharedt;
         TextView sharenr;
+        ImageView img;
     }
 }

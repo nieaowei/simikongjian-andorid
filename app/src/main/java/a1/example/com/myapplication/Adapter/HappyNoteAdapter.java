@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -37,6 +38,8 @@ public class HappyNoteAdapter extends ArrayAdapter<HappyNoteModel> {
 
             viewHolder.name = (TextView)view.findViewById(R.id.item_happy_note_name);
             viewHolder.author = (TextView)view.findViewById(R.id.item_happy_note_time);
+            viewHolder.address = (TextView)view.findViewById(R.id.address);
+            viewHolder.weather = (TextView)view.findViewById(R.id.waather);
 
             view.setTag(viewHolder);//将viewHolder存储在view中
         }else{
@@ -46,13 +49,16 @@ public class HappyNoteAdapter extends ArrayAdapter<HappyNoteModel> {
 
         viewHolder.name.setText(book.getNotetitle());
         viewHolder.author.setText(book.getWritetime());
-
+        viewHolder.address.setText(book.getAddress());
+        viewHolder.weather.setText(book.getWeather());
         return view;
     }
 
     class ViewHolder{
         TextView name;
         TextView author;
+        TextView weather;
+        TextView address;
     }
 
 }

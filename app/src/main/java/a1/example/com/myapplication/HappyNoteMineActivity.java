@@ -145,10 +145,14 @@ public class HappyNoteMineActivity extends AppCompatActivity {
                         String note = (String) aaa.get("note");
                         String writetime = (String) aaa.get("writetime");
                         String notetitle = (String) aaa.get("notetitle");
+                        String address = (String)aaa.get("address");
+                        String weather = (String)aaa.get("weather");
                         happyNoteModel.setNote(note);
                         happyNoteModel.setNotetitle(notetitle);
                         happyNoteModel.setNoteuser(noteuser);
                         happyNoteModel.setWritetime(writetime);
+                        happyNoteModel.setAddress(address);
+                        happyNoteModel.setWeather(weather);
                         bookList.add(happyNoteModel);
                     }
                     String userFoot = "查看了自己的日记";

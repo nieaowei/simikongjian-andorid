@@ -308,7 +308,7 @@ public class SettingActivity extends AppCompatActivity {
             RecordUserFootUtil.recordUserFoot(USERNAME,userFoot);
             Toast.makeText(SettingActivity.this, "修改密码成功！", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(SettingActivity.this, "账号密码错误，请重新登陆！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SettingActivity.this, "旧密码错误，修改密码失败", Toast.LENGTH_SHORT).show();
         }
     }
 
