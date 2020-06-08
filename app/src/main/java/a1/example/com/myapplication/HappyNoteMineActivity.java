@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import a1.example.com.myapplication.Adapter.HappyNoteAdapter;
+import a1.example.com.myapplication.Adapter.NoteItemDialog;
 import a1.example.com.myapplication.Model.HappyNoteModel;
 import a1.example.com.myapplication.Util.MyWriteUtils;
 import a1.example.com.myapplication.Util.RecordUserFootUtil;
@@ -70,7 +71,16 @@ public class HappyNoteMineActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 HappyNoteModel book = bookList.get(i);
-                Toast.makeText(HappyNoteMineActivity.this,book.getNote().toString(),Toast.LENGTH_LONG).show();
+//                Toast.makeText(HappyNoteMineActivity.this,book.getNote().toString(),Toast.LENGTH_LONG).show();
+                NoteItemDialog noteItemDialog = new NoteItemDialog(HappyNoteMineActivity.this,R.style.AppTheme);
+
+                noteItemDialog.show();
+                noteItemDialog.note_title.setText(book.getNotetitle());
+                noteItemDialog.note_weather.setText(book.getWeather());
+                noteItemDialog.note_address.setText(book.getAddress());
+                noteItemDialog.note_content.setText(book.getNote());
+                noteItemDialog.note_date.setText(book.getWritetime());
+
             }
         });
     }
