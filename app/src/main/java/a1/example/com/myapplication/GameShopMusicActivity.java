@@ -2,7 +2,9 @@ package a1.example.com.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.StrictMode;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,18 +14,25 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
+import com.alibaba.fastjson.util.IOUtils;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import a1.example.com.myapplication.Adapter.MusicAdapter;
 import a1.example.com.myapplication.Model.MusicModel;
@@ -40,6 +49,7 @@ public class GameShopMusicActivity extends AppCompatActivity {
     String USERNAME = "";
     String RESULT = "";
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +68,7 @@ public class GameShopMusicActivity extends AppCompatActivity {
         initData();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void initData() {
         myMusicRequest();
         adapterListView = new MusicAdapter(GameShopMusicActivity.this,R.layout.item_music_view,musicList);
@@ -109,6 +120,8 @@ public class GameShopMusicActivity extends AppCompatActivity {
             //dataPost类是自定义的数据交互对象，只有两个成员变量
             JSONObject userJSON = new JSONObject();
             userJSON.put("musiclUrl",musiclUrl);
+            userJSON.put("username",USERNAME);
+
             String content = String.valueOf(userJSON);
 
             os.write(content.getBytes());
@@ -153,6 +166,7 @@ public class GameShopMusicActivity extends AppCompatActivity {
         AudioPlayerUtils.stop();
         finish();
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void myMusicRequest() {
         URL url = null;
         String urlStr = MyWriteUtils.MyURL+"/selectmusic";
@@ -194,9 +208,16 @@ public class GameShopMusicActivity extends AppCompatActivity {
 
             //将内存缓冲区中封装好的完整的HTTP请求电文发送到服务端，并获取访问状态
             if(HttpURLConnection.HTTP_OK==httpURLConnection.getResponseCode()){
-
                 InputStream inputStream = httpURLConnection.getInputStream();
-                String result1 = RequestUtils.stremToString(inputStream);
+                ByteArrayOutputStream outSteam = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int len = -1;
+                while ((len = inputStream.read(buffer)) != -1) {
+                    outSteam.write(buffer, 0, len);
+                }
+                outSteam.close();
+                inputStream.close();
+                String result1 = outSteam.toString();
                 RESULT = result1;
                 if (!RESULT.equals("")){
                     Map<String, Object> map = MyWriteUtils.jsonToMap(RESULT);

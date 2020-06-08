@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class MyWriteUtils {
 
-    // public static String MyURL = "http://192.168.0.103:8080/myproject";
+//     public static String MyURL = "http://192.168.1.12:8080/myproject";
     public static String MyURL = "http://112.124.16.120:8080/myproject";
 
     public static String getURL(){

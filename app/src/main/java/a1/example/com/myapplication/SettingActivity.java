@@ -189,7 +189,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void uploadPic() {
-        String uploadUrl = MyWriteUtils.MyURL+"/uploadHead";
+        String uploadUrl = MyWriteUtils.MyURL+"/uploadHead?username"+USERNAME;
         String end = "\r\n";
         String twoHyphens = "--";
         String boundary = "******";

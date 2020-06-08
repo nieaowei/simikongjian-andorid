@@ -1,10 +1,13 @@
 package a1.example.com.myapplication;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -123,7 +126,7 @@ public class GameShopMusicUpActivity extends AppCompatActivity {
     private void uploadMusic() {
         // post请求上传
         String audioPath = audioFile.getAbsolutePath();
-        String uploadUrl = MyWriteUtils.MyURL+"/uploadMusic";
+        String uploadUrl = MyWriteUtils.MyURL+"/uploadMusic?username="+USERNAME;
         String end = "\r\n";
         String twoHyphens = "--";
         String boundary = "******";
@@ -227,6 +230,19 @@ public class GameShopMusicUpActivity extends AppCompatActivity {
     }
 
     private void startMusic(){
+        if (Build.VERSION.SDK_INT>=23){
+            int Req = 101;
+            String[] per ={
+                    Manifest.permission.RECORD_AUDIO,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+            };
+            for (String str :per){
+                if (this.checkSelfPermission(str)!= PackageManager.PERMISSION_GRANTED){
+                    this.requestPermissions(per,Req);
+                }
+            }
+        }
         if (!MyMusicUtils.haveSdCard()) {
             Toast.makeText(this, "SD不存在，不正常录音！！", Toast.LENGTH_LONG).show();
         } else {
