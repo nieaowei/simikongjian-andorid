@@ -328,7 +328,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
-                android:text="心情商城"
+                android:text="闲时娱乐"
                 android:textColor="@color/bpWhite"
                 android:textSize="@dimen/sp_14"
                 app:layout_constraintBottom_toBottomOf="parent"

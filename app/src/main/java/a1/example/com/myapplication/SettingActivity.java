@@ -166,6 +166,8 @@ public class SettingActivity extends AppCompatActivity {
                     String username_pass_ok = createUserDialog.username_pass_ok.getText().toString().trim();
                     String old = createUserDialog.user_old_password.getText().toString().trim();
 
+
+
                     if (!username_pass.equals(username_pass_ok)){
                         Toast.makeText(SettingActivity.this, "两次输入密码不一致！", Toast.LENGTH_SHORT).show();
                     }else {

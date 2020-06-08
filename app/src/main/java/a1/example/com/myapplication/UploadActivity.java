@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -209,27 +210,28 @@ public class UploadActivity extends AppCompatActivity {
     private void handleImageOnKitKat(Intent data) {
         String imagePath = null;
         Uri uri = data.getData();
-//        if (DocumentsContract.isDocumentUri(this, uri)) {
-//            // 如果是document类型的Uri，则通过document id处理
-//            String docId = DocumentsContract.getDocumentId(uri);
-//            if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
-//                String id = docId.split(":")[1];
-//                // 解析出数字格式的id
-//                String selection = MediaStore.Images.Media._ID + "=" + id;
-//                imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, selection);
-//            } else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())) {
-//                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(docId));
-//                imagePath = getImagePath(contentUri, null);
-//            }
-//        } else if ("content".equalsIgnoreCase(uri.getScheme())) {
-//            // 如果是content类型的Uri，则使用普通方式处理
-//            imagePath = getImagePath(uri, null);
-//        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
-//            // 如果是file类型的Uri，直接获取图片路径即可
-//            imagePath = uri.getPath();
-//        }
+        Log.d("images",uri.getPath());
+        if (DocumentsContract.isDocumentUri(this, uri)) {
+            // 如果是document类型的Uri，则通过document id处理
+            String docId = DocumentsContract.getDocumentId(uri);
+            if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
+                String id = docId.split(":")[1];
+                // 解析出数字格式的id
+                String selection = MediaStore.Images.Media._ID + "=" + id;
+                imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, selection);
+            } else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())) {
+                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content: //downloads/public_downloads"), Long.valueOf(docId));
+                imagePath = getImagePath(contentUri, null);
+            }
+        } else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            // 如果是content类型的Uri，则使用普通方式处理
+            imagePath = getImagePath(uri, null);
+        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            // 如果是file类型的Uri，直接获取图片路径即可
+            imagePath = uri.getPath();
+        }
         // 根据图片路径显示图片
-        displayImage(uri);
+        displayImage(imagePath);
     }
 
     /**
@@ -238,8 +240,8 @@ public class UploadActivity extends AppCompatActivity {
      */
     private void handleImageBeforeKitKat(Intent data) {
         Uri uri = data.getData();
-//        String imagePath = getImagePath(uri, null);
-        displayImage(uri);
+        String imagePath = getImagePath(uri, null);
+        displayImage(imagePath);
     }
 
     private String getImagePath(Uri uri, String selection) {
@@ -255,14 +257,15 @@ public class UploadActivity extends AppCompatActivity {
         return path;
     }
 
-    private void displayImage(Uri imagePath) {
+    private void displayImage(String imagePath) {
         if (imagePath != null) {
 //            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
-            String imgFile = ImageRarActivity.getimage(imagePath.getPath().split(":")[1]).getPath();
-            filepath = imagePath.getPath().split(":")[1];
+            String  imgFile= ImageRarActivity.getimage(imagePath).getPath();
+            filepath = imagePath;
+            Log.d("--------------",imgFile+"----"+filepath);
             Bitmap bitmap2= BitmapFactory.decodeFile(imgFile);
             imageBtn.setImageBitmap(bitmap2);
-            fileUrlBtn.setText(imagePath.getPath().split(":")[1]);
+            fileUrlBtn.setText(imagePath);
         } else {
             Toast.makeText(this, "获取相册图片失败", Toast.LENGTH_SHORT).show();
         }
