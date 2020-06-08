@@ -33,6 +33,7 @@ public class ClothFenxiActivity extends AppCompatActivity {
     public TextView low;
     public TextView high;
     public TextView notice;
+    public TextView jintian;
     String USERNAME = "";
     String RESULT = "";
     String PARAM = "";
@@ -57,6 +58,7 @@ public class ClothFenxiActivity extends AppCompatActivity {
         low = (TextView) findViewById(R.id.low);
         high = (TextView) findViewById(R.id.high);
         notice = (TextView) findViewById(R.id.notice);
+        jintian = (TextView)findViewById(R.id.jintian);
 
         week.setText(weatherModel.getWeek());
         fx.setText(weatherModel.getFx());

@@ -216,6 +216,8 @@ public class MyClothesActivity extends AppCompatActivity {
                 InputStream inputStream = httpURLConnection.getInputStream();
                 String result1 = RequestUtils.stremToString(inputStream);
                 RESULT = result1;
+                Log.d("RESULT",result1);
+
                 if (!RESULT.equals("")){
                     Map<String, Object> map = MyWriteUtils.jsonToMap(RESULT);
                     Iterator iterator = map.keySet().iterator();
