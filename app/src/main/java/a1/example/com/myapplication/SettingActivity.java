@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.json.JSONObject;
 
@@ -113,7 +114,7 @@ public class SettingActivity extends AppCompatActivity {
         selectHead();
 //        Bitmap bitmap = MyPictureUtils.stringtoBitmap(bookList.get(0).getKeys());
 //        imageView.setImageBitmap(bitmap);
-        Glide.with(this).load(bookList.get(0).url).into(imageView);
+//        Glide.with(this).load(bookList.get(0).url).into(imageView);
     }
 
     @OnClick({R.id.change_head_btn, R.id.update_pass_btn,R.id.change_user_btn,R.id.out_soft,R.id.back_btn})
@@ -167,7 +168,6 @@ public class SettingActivity extends AppCompatActivity {
                     String old = createUserDialog.user_old_password.getText().toString().trim();
 
 
-
                     if (!username_pass.equals(username_pass_ok)){
                         Toast.makeText(SettingActivity.this, "两次输入密码不一致！", Toast.LENGTH_SHORT).show();
                     }else {
@@ -189,7 +189,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void uploadPic() {
-        String uploadUrl = MyWriteUtils.MyURL+"/uploadHead?username"+USERNAME;
+        String uploadUrl = MyWriteUtils.MyURL+"/uploadHead?username="+USERNAME;
         String end = "\r\n";
         String twoHyphens = "--";
         String boundary = "******";
@@ -316,7 +316,7 @@ public class SettingActivity extends AppCompatActivity {
 
     private void selectHead() {
         URL url = null;
-        String urlStr = MyWriteUtils.MyURL+"/selectHead";
+        String urlStr = MyWriteUtils.MyURL+"/selectHead?username="+USERNAME;
         String result="";//要返回的结果
 
         try {
@@ -360,6 +360,11 @@ public class SettingActivity extends AppCompatActivity {
                 String result1 = RequestUtils.stremToString(inputStream);
                 RESULT = result1;
                 if (!RESULT.equals("")){
+                    Glide.with(this).load(RESULT)
+                            .skipMemoryCache(true)
+                            .diskCacheStrategy(DiskCacheStrategy.NONE)
+                            .into(imageView);
+
                     PictureModel pictureModel = new PictureModel();
                     pictureModel.url=RESULT;
                     bookList.add(pictureModel);

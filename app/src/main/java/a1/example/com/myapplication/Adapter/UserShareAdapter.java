@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
@@ -51,7 +52,10 @@ public class UserShareAdapter extends ArrayAdapter<UserShareModel> {
         viewHolder.sharename.setText(userShare.getUsername());
         viewHolder.sharenr.setText(userShare.getShares());
         viewHolder.sharedt.setText(userShare.getSharesdt());
-        Glide.with(this.getContext()).load(userShare.getSharesurl()).into(viewHolder.img);
+        Glide.with(this.getContext()).load(userShare.getSharesurl())
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(viewHolder.img);
 
         return view;
     }

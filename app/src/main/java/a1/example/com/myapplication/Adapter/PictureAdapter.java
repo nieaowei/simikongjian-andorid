@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +82,10 @@ public class PictureAdapter extends ArrayAdapter<PictureModel> {
         int cellCount = distance >= 2? 2:distance;
         List<PictureModel> itemList = list.subList(position*2,position*2+cellCount);
         if (itemList.size() >0) {
-            Glide.with(this.context).load(itemList.get(0).url).into(viewHolder.name);
+            Glide.with(this.context).load(itemList.get(0).url)
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(viewHolder.name);
             Log.d("image",itemList.get(0).url);
 //            Bitmap bitmap = MyPictureUtils.stringtoBitmap(itemList.get(0).getKeys());
 //            viewHolder.name.setImageBitmap(bitmap);
@@ -90,7 +94,10 @@ public class PictureAdapter extends ArrayAdapter<PictureModel> {
                 viewHolder.name2.setVisibility(View.VISIBLE);
                 Log.d("image",itemList.get(1).url);
 
-                Glide.with(this.context).load(itemList.get(1).url).into(viewHolder.name2);
+                Glide.with(this.context).load(itemList.get(1).url)
+                        .skipMemoryCache(true)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .into(viewHolder.name2);
 
 //                viewHolder.name2.setImageBitmap(bitmap2);
 

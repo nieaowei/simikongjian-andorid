@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.json.JSONObject;
 
@@ -89,7 +90,10 @@ public class SendShareDialog extends AppCompatActivity {
             USERNAME = username;
             String s = sp.getString("msg","");
             my_friends_shares_message.setText(s);
-            Glide.with(this).load(PICURL).into(imageView);
+            Glide.with(this).load(PICURL)
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(imageView);
 
 
         }
